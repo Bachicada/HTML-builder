@@ -57,26 +57,6 @@ fs.readdir(pathFinderStyles,
     }
 })
 
-// assets
-let pathFinderCopy = path.join(__dirname,'project-dist','assets');
-let pathFinderOrigin= path.join(__dirname,'assets');
-
-async function copyDir(){
-
-    const files = await fsPromises.readdir(pathFinderOrigin, {withFileTypes: true});
-    await fsPromises.mkdir(pathFinderCopy, { recursive: true });
-
-    for(let file of files) {
-        const fromPath = path.join(pathFinderOrigin, file.name);
-        const toPath = path.join(pathFinderCopy, file.name);
-        if(file.isDirectory()) {
-            await copyDir();
-        } else {
-            await fsPromises.copyFile();
-        }
-    }
-}
-
 }
 createHTML();
 
